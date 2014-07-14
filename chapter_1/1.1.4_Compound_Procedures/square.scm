@@ -1,3 +1,3 @@
-(define (square x) x * x)
+(define (square x) (* x x))
 
 (square 7)

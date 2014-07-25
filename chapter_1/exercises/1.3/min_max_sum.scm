@@ -3,9 +3,11 @@
   (cond ((and (> x y) (> z y)) (list x z))
         ((and (> y z) (> x z)) (list x y))
         ((and (> y x) (> z x)) (list y z))
+        ((= x y z) (list x y))
         (else 0)))
 
 (define (start x y z)
   (+ (sq (car (max x y z))) (sq (car (cdr (max x y z))))))
 
 (start 1 2 3)
+(start 2 2 2)

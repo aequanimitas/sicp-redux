@@ -8,8 +8,14 @@ def a(b,c):
     if b == 0:
         d = 0
     else:
-        d = c
+        c
     return d
 
-print x(0, p)
-print a(1, p)
+# this is by using a function object,
+# still unsure on how to call function objects in py
+print x(1, p)
+
+
+# uncomment next line to see applicative order evaluation
+# since there is a 'trigger/signal' for 'immediate' evaluation
+# print x(0, p())

@@ -6,3 +6,4 @@
   (runner 1 1))
 
 (factorial 9)
+(disassemble factorial)

@@ -3,4 +3,4 @@
     z
     (* z (factorial (- z 1)))))
 
-(factorial 3)
+(factorial 9)

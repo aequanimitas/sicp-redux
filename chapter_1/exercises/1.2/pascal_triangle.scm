@@ -4,11 +4,12 @@
   (define (out-of-bounds? x y)
     (or (= x 0) (= y 0)))
   (define (runner x y)
-     (cond ((edges? x y) 1)
-           ((out-of-bounds? x y) 1)
-           ((+ (runner (- x 1) (- y 1)) (runner (- x 1) y)))))
+    (cond ((edges? x y) 1)
+          ((out-of-bounds? x y) 1)
+          ((+ (runner (- x 1) (- y 1)) (runner (- x 1) y)))))
   (runner x y))
 
+(trace pascal)
 ; base cases
 (pascal 1 1)
 (pascal 0 0)

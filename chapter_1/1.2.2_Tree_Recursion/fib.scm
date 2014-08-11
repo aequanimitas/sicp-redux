@@ -7,11 +7,13 @@
 (fib-r 9)
 
 (define (fib-i-01 n)
-  (define (iter x y z)
+  (define (iter x y z a)
     (if (= z 0)
-        y
-        (iter (+ x y) x (- z 1))))
-  (iter 1 0 n))
+        a
+        (iter (+ x y) x (- z 1) (if (= (modulo y 2) 0)
+                                        (+ a y)
+                                        a))))
+  (iter 1 0 n 0))
 
 (define (fib-i-02 n)
   (define (iter x y z)
@@ -22,3 +24,5 @@
   (iter 1 0 0))
 
 (= (fib-r 9) (fib-i-02 9) (fib-i-01 9))
+
+(fib-i-01 400000)

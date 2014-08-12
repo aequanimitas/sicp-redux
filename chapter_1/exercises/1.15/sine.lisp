@@ -5,7 +5,6 @@
      (* 4 (cube x)))
 
 (defun sine (angle)
-  (format t "~f~%" angle)
   (if (not (> (abs angle) 0.1))
       angle
       (p (sine (/ angle 3.0)))))

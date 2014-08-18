@@ -24,3 +24,5 @@
 
 (newline)
 (format t "~A" (fib 10))
+(format t "~A" (fib 100))
+(format t "~A" (fib 1000))

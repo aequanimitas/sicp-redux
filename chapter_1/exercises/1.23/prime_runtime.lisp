@@ -3,10 +3,14 @@
   (defun divides? (x y)
     (= 0 (mod y x)))
 
+  (defun next(x)
+    (if (= x 2) 3
+        (+ x 2)))
+
   (defun find-divisor (x y)
      (cond ((> (* y y) x) x)
            ((divides? y x) y)
-           (t (find-divisor x (+ 1 y)))))
+           (t (find-divisor x (next y)))))
 
   (find-divisor x 2))
 
@@ -35,7 +39,6 @@
             (looper (+ n 2) (+ c 1) rt))
           (t (looper (+ n 1) c rt))))
   (looper n 1 (get-internal-run-time)))
-
 
 (timed-prime-test 1000)
 (timed-prime-test 10000)

@@ -4,3 +4,4 @@
       (* base (expo base (- exp 1)))))
 
 (format t "~A" (expo 9 3))
+

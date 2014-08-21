@@ -36,5 +36,20 @@
 (define (sum-ints a b)
   (sum identity a next b))
 
+(define (pi-sum a b)
+  (define (pi-term x)
+    (/ 1.0 (* x (+ x 2))))
+  (define (pi-next x)
+    (+ x 4))
+  (sum pi-term a pi-next b))
+
+(* 8 (pi-sum 1 1000))
 (sum-cube 1 10)
 (sum-integers 1 10)
+
+(define (integral f a b dx)
+  (define (add-dx x) (+ x dx))
+  (* (sum f (+ a (/ dx 2.0)) add-dx b) dx))
+
+(integral cube 0 1 0.01)
+

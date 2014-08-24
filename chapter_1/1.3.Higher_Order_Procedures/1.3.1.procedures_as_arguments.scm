@@ -44,7 +44,7 @@
   (sum pi-term a pi-next b))
 
 (* 8 (pi-sum 1 1000))
-(sum-cube 1 10)
+(sum-cube 12 1)
 (sum-integers 1 10)
 
 (define (integral f a b dx)

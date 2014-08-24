@@ -22,4 +22,8 @@
   (* (sum-fn f (+ a (/ dx 2.0)) add-dx b) dx))
 
 (define (simpson f a b n)
-  (defin
+  (
+  (h))
+
+(simpson cube 0 1 100.0)
+  

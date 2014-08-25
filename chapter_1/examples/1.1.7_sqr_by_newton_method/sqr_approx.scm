@@ -1,0 +1,13 @@
+(define (sqrt x)
+  (define (average a b)
+    (/ (+ a b) 2.0))
+  (define (improve guess x)
+    (average guess (/ x guess)))
+  (define (good-enough? guess x threshold)
+    (< (abs (- (square guess) x)) threshold))
+  (define (iter x guess threshold)
+    (if (good-enough? guess x threshold)
+        guess
+        (iter x (improve guess x) threshold)))
+  (iter x 1 0.0001))
+(sqrt 10000)

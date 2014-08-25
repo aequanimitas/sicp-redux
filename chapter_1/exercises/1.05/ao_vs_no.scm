@@ -5,3 +5,4 @@
     y))
 
 (test 0 p)
+(test 0 (p))

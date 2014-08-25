@@ -1,0 +1,15 @@
+(define (nth-root x n)
+  (define guess-multiplier (- n 1.0))
+  (define (mean x y distribution)
+    (/ (+ x y) distribution))
+  (define (good-enough? guess previous-guess threshold)
+    (< (abs (- guess previous-guess)) threshold))
+  (define (refine guess x)
+    (mean (* guess-multiplier guess) (/ x (expt guess guess-multiplier)) n))
+  (define (iter x guess refine-fn previous-guess threshold)
+    (if (good-enough? guess previous-guess threshold)
+        guess
+        (iter x (refine-fn guess x) refine-fn guess threshold)))
+  (iter x 1 refine 0 0.0001))
+
+(nth-root 9 2)

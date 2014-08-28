@@ -3,11 +3,6 @@
       0
       (+ a (sum-integers (+ a 1) b))))
 
-(define (sum-cubes a b)
-  (if (> a b)
-      0
-      (+ (cube a) (sum-cubes (+ a 1) b))))
-
 (define (pi-sum a b)
   (if (> a b)
       0
@@ -20,9 +15,6 @@
       0
       (+ (term a)
          (sum term (next a) next b))))
-
-(define (cube x)
-  (* x x x))
 
 (define (inc x)
   (+ x 1))
@@ -53,3 +45,41 @@
 
 (integral cube 0 1 0.01)
 
+(define (cube x)
+  (* x x x))
+
+(define (sum-cubes a b)
+  (if (> a b)
+      0
+      (+ (cube a) (sum-cubes (+ a 1) b))))
+
+(define (sums-r a b)
+  (if (= b 0)
+      a
+      (+ 1 (sums-r a (- b 1)))))
+
+(define (sums-i a b)
+  (if (= b 0)
+      a
+      (sums-i (+ a 1) (- b 1))))
+
+(sums-r 12 0) 
+(sums-r 12 1)
+(= (sums-i 12 1) (sums-r 12 1))
+
+(define (product-r a b)
+  (if (= b 0)
+      0
+      (+ a (product-r a (- b 1)))))
+
+(define (product-i a b accu)
+  (if (= b 0)
+      a
+      (product-i a (- b 1) (+ accu a))))
+      
+
+(product-r 3 0)
+(product-r 3 4)
+(product-i 3 4 0)
+(= (product-r 3 4) (sums-i 12 0))
+(= (product-i 3 4 0) (sums-i 12 0))

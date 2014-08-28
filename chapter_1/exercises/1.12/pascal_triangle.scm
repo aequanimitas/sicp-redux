@@ -9,7 +9,6 @@
           ((+ (runner (- x 1) (- y 1)) (runner (- x 1) y)))))
   (runner x y))
 
-(trace pascal)
 ; base cases
 (pascal 1 1)
 (pascal 0 0)
@@ -25,3 +24,5 @@
 (pascal 11 6)
 (pascal 12 7)
 (pascal 13 7)
+
+(pascal 8 10)

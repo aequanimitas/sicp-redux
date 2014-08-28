@@ -74,7 +74,7 @@
 
 (define (product-i a b accu)
   (if (= b 0)
-      a
+      accu
       (product-i a (- b 1) (+ accu a))))
       
 

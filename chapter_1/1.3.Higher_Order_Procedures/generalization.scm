@@ -1,33 +1,25 @@
-(define (dec x)
+(define (dec-by-1 x)
   (- x 1))
 
-(define (inc x)
+(define (inc-by-1 x)
   (+ x 1))
 
-(define (nothing? x)
-  (= x 0))
+(define (double x)
+  (+ x x))
 
-(define (accumulate a b accu step combiner null-value c-term)
-  (define (iter a b accu)
-    (if (null-value b)
-        accu
-        (iter a (step b) (combiner accu c-term))))
-  (iter a b accu))
+(define (sum a b next term)
+  (define (iter a result)
+    (if (= a 0)
+        result
+        (iter (next a) (term result))))
+  (iter a b))
 
-(define (sum a b)
-  (accumulate a b a dec + nothing? 1))
+(define (product a b next term)
+  (define (iter x result)
+    (if (= x 0)
+        result
+        (iter (next x) (term result b))))
+  (iter a 0))
 
-(define (product a b)
-  (accumulate a (- b 1) a dec + nothing? a))
-
-; specific cases
-(define (sum-cubes a b)
-  (define (iter a b accu)
-    (if (= b 0)
-        accu
-        (iter (+ a 1) (- b 1) (+ accu (* a a a)))))
-  (iter a b 0))
-
-(sum 12 8)
-(product 4 5)
-;(= (sum 12 8) (product 4 5)) 
+(sum 3 4 dec-by-1 +)
+(product 3 4 dec-by-1 +)

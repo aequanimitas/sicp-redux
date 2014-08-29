@@ -1,25 +1,24 @@
-(define (dec-by-1 x)
-  (- x 1))
-
-(define (inc-by-1 x)
-  (+ x 1))
-
-(define (double x)
-  (+ x x))
-
-(define (sum a b next term)
-  (define (iter a result)
-    (if (= a 0)
+(define (sum-range x y termfn)
+  (define (iter a b result)
+    (if (= b 0)
         result
-        (iter (next a) (term result))))
-  (iter a b))
+        (iter (+ a 1) (- b 1) (+ (termfn a) result)))) 
+  (iter x y 0))
 
-(define (product a b next term)
-  (define (iter x result)
-    (if (= x 0)
+(define (product-range x y termfn)
+  (define (iter a b result)
+    (if (= b 0)
         result
-        (iter (next x) (term result b))))
-  (iter a 0))
+        (iter (+ a 1) (- b 1) (* (termfn a) result)))) 
+  (iter x y 1))
 
-(sum 3 4 dec-by-1 +)
-(product 3 4 dec-by-1 +)
+(define (identity x)
+  x)
+
+(define (cube x)
+  (* x x x))
+
+(sum-range 1 10 identity)
+(sum-range 1 10 cube)
+(product-range 10 1 identity)
+(product-range 10 1 cube)

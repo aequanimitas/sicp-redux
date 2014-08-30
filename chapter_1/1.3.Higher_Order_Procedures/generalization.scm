@@ -1,32 +1,29 @@
-(define (sum-range x y termfn)
-  (define (iter a b result)
-    (if (= b 0)
+(define (sum-range-i x y term next)
+  (define (iter a result)
+    (if (> a y)
         result
-        (iter (+ a 1) (- b 1) (+ (termfn a) result)))) 
-  (iter x y 0))
+        (iter (next a) (+ (term a) result))))
+  (iter x 0))
 
-(define (product-range x y termfn)
-  (define (iter a b result)
-    (if (= b 0)
+(define (sum-range-r x y term next)
+  (if (> x y)
+      0
+      (+ (term x) (sum-range-r (next x) y term next))))
+
+(define (product-range-i x y term next)
+  (define (iter a result)
+    (if (> a y)
         result
-        (iter (+ a 1) (- b 1) (* (termfn a) result)))) 
-  (iter x y 1))
+        (iter (next a) (* (term a) result))))
+  (iter x 1))
 
-(define (accumulate x y termfn combiner start-value null-value step)
-  (define (iter a b result)
-    (if (= b null-value)
-        result
-        (iter (+ a 1) (step b) (combiner (termfn a) result)))) 
-  (iter x y start-value))
+(define (product-range-r x y term next)
+  (if (> x y)
+      1
+      (* (term a) (product-range-i (next x) y term next))))
 
-(define (decrement x)
-  (- x 1))
-
-(define (sum-range-a x y termfn)
-  (accumulate x y termfn + 0 0 decrement))
-
-(define (product-range-a x y termfn)
-  (accumulate x y termfn * 1 0 decrement))
+(define (increment x)
+  (+ x 1))
 
 (define (identity x)
   x)
@@ -34,37 +31,9 @@
 (define (cube x)
   (* x x x))
 
-(= (sum-range 1 10 identity) (sum-range-a 1 10 identity))
-(= (product-range 1 10 identity) (product-range-a 1 10 identity))
-(product-range-a 1 10 identity)
-
-; exercise
-(define (factorial start end)
-  (product-range-a start end identity))
-
-(factorial 1 5)
-
-; exercise 1.33
-(define (smallest-divisor x)
-  (define (divides? x y)
-    (= (remainder y x) 0))
-  (define (find-divisor x y)
-    (cond ((> (square y) x) x)
-          ((divides? y x) y)
-          (else (find-divisor x (+ y 1)))))
-  (find-divisor x 2))
-
-(define (prime? x)
-  (= x (smallest-divisor x)))
-
-(define (filtered-accumulate x y termfn combiner start-value null-value step filter-cond)
-  (define (iter a b result)
-    (cond ((= b null-value) result)
-          ((filter-cond a) (iter (+ a 1) (step b) (combiner (termfn a) result)))
-          (else (iter (+ a 1) (step b) result))))
-  (iter x y start-value))
-
-(define (sum-of-squares-primes x y)
-  (filtered-accumulate x y square + 0 0 decrement prime?))
-
-(sum-of-squares-primes 1 10)
+(= (sum-range-i 2 3 identity increment) (sum-range-r 2 3 identity increment))
+(= (sum-range-i 2 3 square increment) (sum-range-r 2 3 square increment))
+(= (sum-range-i 2 3 cube increment) (sum-range-r 2 3 cube increment))
+(= (product-range-i 2 3 cube increment) (product-range-i 2 3 cube increment))
+(= (product-range-i 2 3 square increment) (product-range-i 2 3 square increment))
+(= (product-range-i 2 3 identity increment) (product-range-i 2 3 identity increment))

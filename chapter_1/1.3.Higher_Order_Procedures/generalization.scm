@@ -102,6 +102,16 @@
 (are-coprimes? 6 36)
 (are-coprimes? 5 36)
 
+(define (is-a-co-prime? x)
+  (= 1 (gcd x y)))
+
+(define (product-of-coprimes-fn-scope x y)
+  (define (co-prime? x)
+    (= 1 (gcd x y)))
+  (filtered-accumulate-i x y identity increment * 1 is-a-co-prime?))
+
+(product-of-coprimes-fn-scope 2 3)
+
 (define (product-of-coprimes x y)
   (define (co-prime? x)
     (= 1 (gcd x y)))

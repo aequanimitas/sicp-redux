@@ -72,9 +72,8 @@
   (define (iter a result)
     (cond ((> a y) result)
           ((filter-cond a) (iter (next a) (combiner (term a) result)))
-          (else (iter (next a) (combiner (term a) result)))))
+          (else (iter (next a) result))))
   (iter x null-value))
-
 
 (define (smallest-divisor x y)
   (define (find-divisor endpoint startpoint)
@@ -87,3 +86,8 @@
 
 (define (prime? n)
   (= (smallest-divisor n 2) n))
+
+(define (primes-sum-square-range x y)
+  (filtered-accumulate-i x y square increment + 0 prime?))
+
+(primes-sum-square-range 6 7)

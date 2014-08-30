@@ -93,8 +93,18 @@
 (primes-sum-square-range 6 7)
 
 (define (are-coprimes? x y)
-  (define (comprime? x)
+  (define (co-prime? x)
     (= 1 (gcd x y)))
   (define (fn z fun)
     (fun z))
-  (fn x comprime?))
+  (fn x co-prime?))
+
+(are-coprimes? 6 36)
+(are-coprimes? 5 36)
+
+(define (product-of-coprimes x y)
+  (define (co-prime? x)
+    (= 1 (gcd x y)))
+  (filtered-accumulate-i x y identity increment * 1 co-prime?))
+
+(product-of-coprimes 2 3)

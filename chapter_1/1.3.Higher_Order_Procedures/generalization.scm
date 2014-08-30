@@ -91,3 +91,10 @@
   (filtered-accumulate-i x y square increment + 0 prime?))
 
 (primes-sum-square-range 6 7)
+
+(define (are-coprimes? x y)
+  (define (comprime? x)
+    (= 1 (gcd x y)))
+  (define (fn z fun)
+    (fun z))
+  (fn x comprime?))

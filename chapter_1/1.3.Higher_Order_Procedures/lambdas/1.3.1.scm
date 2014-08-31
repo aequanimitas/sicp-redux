@@ -95,3 +95,16 @@
   (filtered-accumulate-i x y identity increment * 1 co-prime?))
 
 ;(product-of-coprimes 2 3)
+
+; let's change how proc f is visually presented to gain more intuition on using lambdas
+; the "third line" are arguments passed to the immediately invoked lambda
+(define (fnz-lambda x y) 
+  ((lambda (a b) (+ (* x (square a)) (* y b) (* a b))) 
+           (+ 1 (* x y)) (- y 1)))
+
+(fnz-lambda 3 4)
+
+(define (tiny-lex-scope x)
+  (= x (let ((x 3)) x)))
+
+(tiny-lex-scope 9)

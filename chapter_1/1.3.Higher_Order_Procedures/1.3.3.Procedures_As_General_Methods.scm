@@ -1,7 +1,7 @@
 ; half interval method
 ; similar to DAC
 
-; mkae this more flexible with the number of arguments it can handle
+; make this more flexible with the number of arguments it can handle
 ; nearer to actual average definition
 
 (define (average x y)
@@ -31,4 +31,4 @@
 (half-interval-method sin 2.0 4.0)
 (half-interval-method (lambda (x) (- (* x x x) (* 2 x) 3)) 1.0 2.0)
 
-
+(half-interval-method sin 2.1 0.1)

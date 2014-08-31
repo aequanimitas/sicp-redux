@@ -108,3 +108,14 @@
   (= x (let ((x 3)) x)))
 
 (tiny-lex-scope 9)
+
+; exercise 1.34
+
+(define (f134 g)
+  (g 2)) 
+
+(f134 square)
+
+(f134 (lambda (z) (* z (+ z 1))))
+
+(f134 f134)

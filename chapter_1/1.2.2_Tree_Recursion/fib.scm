@@ -1,4 +1,6 @@
 (define (fib-r n)
+  (newline)
+  (display n)
   (cond ((= n 0) 0)
         ((= n 1) 1)
         (else (+ (fib-r (- n 1))
@@ -16,4 +18,4 @@
 
 (= (fib-r 9) (fib-i-02 9))
 
-(fib-i-02 33)
+(fib-i-02 5)

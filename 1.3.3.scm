@@ -39,6 +39,8 @@
   (define (close-enough? v1 v2)
     (< (abs (- v1 v2)) tolerance))
   (define (try guess)
+    (newline)
+    (display guess)
     (let ((next (f guess)))
          (if (close-enough? guess next)
              next
@@ -62,11 +64,26 @@
   (define (good-enough? guess previous-guess)
     (< (abs (- guess previous-guess)) 0.001))
   (define (newton-sqrt-find guess previous-guess)
+    (newline)
+    (display guess)
+    (newline)
+    (display previous-guess)
     (if (good-enough? guess previous-guess)
         guess
         (newton-sqrt-find (improve guess) guess)))
   (newton-sqrt-find 1.0 0))
 
-(sqrt 0.001)
+(sqrt 9)
     
 ((lambda (x) ((lambda (x y) (/ (+ x y) 2.0)) x (/ x x))) 1.0)
+
+(fixed-point (lambda (y) (+ (sin y) (cos y))) 1.0)
+
+(define (sqrt-avg x)
+  (fixed-point (lambda (y) (average y (/ x y))) 1.0))
+
+(sqrt-avg 9)
+(define (sqrt-ratio x)
+  (fixed-point (lambda (y) (/ x y)) 1.0))
+
+(sqrt-ratio 9)

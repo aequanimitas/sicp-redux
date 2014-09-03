@@ -56,7 +56,7 @@
 ((lambda (x y fn) (+ (fn x) (fn y))) 0.3 0.43 square)
 
 ; converting this to its most basic form
-(define (sqrt x)
+(define (sqrt-naive-creator x y z)
   (define (average x y)
     (/ (+ x y) 2))
   (define (improve guess)
@@ -71,19 +71,37 @@
     (if (good-enough? guess previous-guess)
         guess
         (newton-sqrt-find (improve guess) guess)))
-  (newton-sqrt-find 1.0 0))
+  (newton-sqrt-find y z))
 
-(sqrt 9)
+(sqrt-naive-creator 9 1.0 0.0)
     
 ((lambda (x) ((lambda (x y) (/ (+ x y) 2.0)) x (/ x x))) 1.0)
 
-(fixed-point (lambda (y) (+ (sin y) (cos y))) 1.0)
+; (fixed-point (lambda (y) (+ (sin y) (cos y))) 1.0)
 
-(define (sqrt-avg x)
-  (fixed-point (lambda (y) (average y (/ x y))) 1.0))
+; (define (sqrt-avg x)
+; (fixed-point (lambda (y) (average y (/ x y))) 1.0))
 
-(sqrt-avg 9)
-(define (sqrt-ratio x)
-  (fixed-point (lambda (y) (/ x y)) 1.0))
+;(sqrt-avg 9)
+;(define (sqrt-ratio x)
+;  (fixed-point (lambda (y) (/ x y)) 1.0))
 
-(sqrt-ratio 9)
+;(sqrt-ratio 9)
+
+
+; exercise 1.36
+(define (fixed-point-1.3 f first-guess)
+  (define (close-enough? v1 v2)
+    (< (abs (- v1 v2)) tolerance))
+  (define (try guess display-counter)
+    (let ((next (f guess)))
+         (cond ((close-enough? guess next)
+             (newline)
+             (display "High-Level Operation Count: " )
+             (display display-counter)
+             next)
+             (else (try next (+ 1 display-counter))))))
+  (try first-guess 0))
+
+(fixed-point-1.3 (lambda (x) (/ (log 1000) (log x))) 2.0)
+(fixed-point-1.3 (lambda (x) (average x (/ (log 1000) (log x)))) 2.0)

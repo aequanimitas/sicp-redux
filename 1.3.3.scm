@@ -114,3 +114,6 @@
       (raise x (- y 1) (* x z))))
 
 (/ (raise golden-ratio 20 1.0) (sqrt 5))
+
+; Exercise 1.35
+(fixed-point-1.3 (lambda (x) (+ 1 (/ 1 x))) golden-ratio)

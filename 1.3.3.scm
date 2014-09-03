@@ -105,3 +105,12 @@
 
 (fixed-point-1.3 (lambda (x) (/ (log 1000) (log x))) 2.0)
 (fixed-point-1.3 (lambda (x) (average x (/ (log 1000) (log x)))) 2.0)
+
+(define golden-ratio (/ (+ 1 (sqrt 5)) 2))
+
+(define (raise x y z)
+  (if (= y 0)
+      z
+      (raise x (- y 1) (* x z))))
+
+(/ (raise golden-ratio 20 1.0) (sqrt 5))

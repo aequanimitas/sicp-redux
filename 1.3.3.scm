@@ -55,26 +55,7 @@
 ; sum of "fn" of two numbers
 ((lambda (x y fn) (+ (fn x) (fn y))) 0.3 0.43 square)
 
-; converting this to its most basic form
-(define (sqrt-naive-creator x y z)
-  (define (average x y)
-    (/ (+ x y) 2))
-  (define (improve guess)
-    (average guess (/ x guess)))
-  (define (good-enough? guess previous-guess)
-    (< (abs (- guess previous-guess)) 0.001))
-  (define (newton-sqrt-find guess previous-guess)
-    (newline)
-    (display guess)
-    (newline)
-    (display previous-guess)
-    (if (good-enough? guess previous-guess)
-        guess
-        (newton-sqrt-find (improve guess) guess)))
-  (newton-sqrt-find y z))
-
-(sqrt-naive-creator 9 1.0 0.0)
-    
+   
 ((lambda (x) ((lambda (x y) (/ (+ x y) 2.0)) x (/ x x))) 1.0)
 
 ; (fixed-point (lambda (y) (+ (sin y) (cos y))) 1.0)
@@ -117,3 +98,26 @@
 
 ; Exercise 1.35
 (fixed-point-1.3 (lambda (x) (+ 1 (/ 1 x))) golden-ratio)
+
+; converting this to its most basic form
+(define (sqrt-naive-creator x y z)
+  (define (average x y)
+    (/ (+ x y) 2))
+  (define (improve guess)
+    (average guess (/ x guess)))
+  (define (good-enough? guess previous-guess)
+    (< (abs (- guess previous-guess)) 0.001))
+  (define (newton-sqrt-find guess previous-guess)
+    (newline)
+    (display guess)
+    (newline)
+    (display previous-guess)
+    (if (good-enough? guess previous-guess)
+        guess
+        (newton-sqrt-find (improve guess) guess)))
+  (newton-sqrt-find y z))
+
+(sqrt-naive-creator 9 1.0 0.0)
+
+; identity
+((lambda (fn) fn)((lambda (fn) fn)((lambda (x y) (/ (+ x y) 2)) 10 100)))

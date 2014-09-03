@@ -17,3 +17,12 @@
   (+ 1 x))
 
 (((double (double double)) inc) 5)
+
+; exercise 1.42
+(define (compose fnx fny)
+  (lambda (x) (fnx (fny x))))
+
+((compose square inc) 6)
+
+; exercise 1.43
+

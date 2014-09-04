@@ -22,7 +22,10 @@
 (define (compose fnx fny)
   (lambda (x) (fnx (fny x))))
 
-((compose square inc) 6)
+((compose square (lambda (x) x)) 6)
 
 ; exercise 1.43
+(define (repeated fnx x)
+  (fnx (lambda (x) x)))
 
+((repeated square 2) 5)

@@ -29,3 +29,12 @@
 (print-rat (add-rat (make-rational-lowest-terms 1 3) (make-rational-lowest-terms 1 3)))
 
 (print-rat (make-rational-basic -10 99))
+
+; Exercise 2.1
+(define (mr n d)
+  (if (> 0 d)
+      (mr (* -1 n) (* -1 d))
+      (let ((g (gcd n d)))
+           (cons (/ n g) (/ d g))))) 
+   
+(mr -1 -3)

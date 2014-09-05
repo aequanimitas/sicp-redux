@@ -33,3 +33,12 @@
       (compose fnx (repeated fnx (- x 1)))))
 
 ((repeated square 2) 5)
+
+; exercise 1.44
+(define pi (/ (+ 1.0 (sqrt 5)) 2.0))
+
+(define (smooth fnx dx)
+  (lambda (x)
+   (/ (+ (fnx x) (fnx (- x dx)) (fnx (+ x dx))) 3.0)))
+
+((smooth sin 0.7) (/ pi 2))

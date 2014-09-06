@@ -1,3 +1,7 @@
+; 1.1.2
+(define size 2)
+(display size)
+
 ; exercise 1.31
 (define (sum-range-i x y term next)
   (define (iter a result)

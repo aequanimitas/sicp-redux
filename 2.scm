@@ -43,10 +43,23 @@
 
 ; exercise 2.2
 
-(define (make-point x y)
-  (cons x y))
+(define (print-point p)
+  (newline)
+  (display "(")
+  (display (x-point p))
+  (display ",")
+  (display (y-point p))
+  (display ")")
+  0)
 
 (make-point 3 -2)
+(start-segment ex2.2.01)
+(print-point (make-point -3 19))
+(start-segment ex2.2.01)
+(midpoint ex2.2.01)
+
+(define (make-point x y)
+  (cons x y))
 
 (define (make-segment x y)
   (cons x y))
@@ -65,22 +78,23 @@
 
 (define ex2.2.01 (make-segment (make-point -3 19) (make-point -4 27)))
 
-(start-segment ex2.2.01)
-
 (define (midpoint a)
   (make-rational-basic (/ (+ (car (car a)) (car (cdr a))) 2.0) (/ (+ (cdr (car a)) (cdr (cdr a))) 2)))
 
-(midpoint ex2.2.01)
+; Exercise 2.3
+(define ex2.3.01 (make-segment (make-point -3 19) (make-point -4 27)))
 
-(define (print-point p)
-  (newline)
-  (display "(")
-  (display (x-point p))
-  (display ",")
-  (display (y-point p))
-  (display ")")
-  0)
+; 2.1.3
+(define (cons-y x y)
+  (define (dispatch m)
+     (cond ((= m 0) x)
+           ((= m 1) y)
+           (else (error "Argument not 0 or 1 -- CONS" m))))
+  dispatch)
 
-(print-point (make-point -3 19))
+(define (car-y z) (z 0))
+(define (cdr-y z) (z 1))
 
-
+(define lol (cons-y "a" "b"))
+(car-y lol)
+(car-y lol)

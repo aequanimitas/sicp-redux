@@ -82,8 +82,11 @@
   (make-rational-basic (/ (+ (car (car a)) (car (cdr a))) 2.0) (/ (+ (cdr (car a)) (cdr (cdr a))) 2)))
 
 ; Exercise 2.3
+(define (is-right-angle? x y z)())
+(define (rectangle w x y z)())
+  
 (define ex2.3.01 (make-segment (make-point -3 19) (make-point -4 27)))
-
+(midpoint ex2.3.01)
 ; 2.1.3
 (define (cons-y x y)
   (define (dispatch m)

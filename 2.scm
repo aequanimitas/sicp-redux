@@ -41,7 +41,6 @@
 (mr 1 -3)
 (mr -1 3)
 
-
 ; exercise 2.2
 
 (define (make-point x y)
@@ -68,6 +67,11 @@
 
 (start-segment ex2.2.01)
 
+(define (midpoint a)
+  (make-rational-basic (/ (+ (car (car a)) (car (cdr a))) 2.0) (/ (+ (cdr (car a)) (cdr (cdr a))) 2)))
+
+(midpoint ex2.2.01)
+
 (define (print-point p)
   (newline)
   (display "(")
@@ -78,3 +82,5 @@
   0)
 
 (print-point (make-point -3 19))
+
+

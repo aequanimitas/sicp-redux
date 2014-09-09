@@ -103,8 +103,14 @@
 (define (point-distance x y fn)
   (square (- (fn y) (fn x))))
 (y-point (make-point -4 27))
-(point-distance (make-point -3 19) (make-point -4 27) x-point)
-(point-distance (make-point -3 19) (make-point -4 27) y-point)
+(define ex2.3.02 (make-segment (make-point -3 19) (make-point -4 27)))
+(point-distance (start-segment ex2.3.02) (end-segment ex2.3.02) x-point)
+(point-distance (start-segment ex2.3.02) (end-segment ex2.3.02) y-point)
 
+(define (y-distance x y)
+  (point-distance x y y-point))
+
+(define (x-distance x y)
+  (point-distance x y x-point))
 (define (rectangle w x y z)())
 

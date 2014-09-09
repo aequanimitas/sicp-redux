@@ -68,23 +68,19 @@
   (car x))
 
 (define (y-point x)
-  (car x))
+  (cdr x))
 
 (define (start-segment x)
   (car x))
 
 (define (end-segment x)
-  (cons x))
+  (cdr x))
 
 (define ex2.2.01 (make-segment (make-point -3 19) (make-point -4 27)))
 
 (define (midpoint a)
   (make-rational-basic (/ (+ (car (car a)) (car (cdr a))) 2.0) (/ (+ (cdr (car a)) (cdr (cdr a))) 2)))
 
-; Exercise 2.3
-(define (is-right-angle? x y z)())
-(define (rectangle w x y z)())
-  
 (define ex2.3.01 (make-segment (make-point -3 19) (make-point -4 27)))
 (midpoint ex2.3.01)
 ; 2.1.3
@@ -101,3 +97,14 @@
 (define lol (cons-y "a" "b"))
 (car-y lol)
 (car-y lol)
+
+
+; Exercise 2.3
+(define (point-distance x y fn)
+  (square (- (fn y) (fn x))))
+(y-point (make-point -4 27))
+(point-distance (make-point -3 19) (make-point -4 27) x-point)
+(point-distance (make-point -3 19) (make-point -4 27) y-point)
+
+(define (rectangle w x y z)())
+

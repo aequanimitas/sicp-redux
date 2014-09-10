@@ -171,7 +171,7 @@ e2.3-p2p1
  
 ; exercise 2.4
 (define (cons-2.4 x y)
-  (lambda (m) (m x y)))
+  (lambda (m) (m x)))
 
 (define (car-2.4 z)
   (z (lambda (p q) p)))
@@ -181,5 +181,3 @@ e2.3-p2p1
 
 (car-2.4 (cons-2.4 10 12))
 (cdr-2.4 (cons-2.4 10 12))
-
-(car-2.4 (() 1 2))

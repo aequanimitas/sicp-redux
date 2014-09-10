@@ -124,6 +124,9 @@
 (define e2.3-p2p1 (db2p (x-distance e2.3-rect-p2 e2.3-rect-p1) (y-distance e2.3-rect-p2 e2.3-rect-p1)))
 (define e2.3-p3p2 (db2p (x-distance e2.3-rect-p3 e2.3-rect-p2) (y-distance e2.3-rect-p3 e2.3-rect-p2)))
 (define e2.3-p3p1 (db2p (x-distance e2.3-rect-p3 e2.3-rect-p1) (y-distance e2.3-rect-p3 e2.3-rect-p1)))
+(define e2.3-p4p3 (db2p (x-distance e2.3-rect-p4 e2.3-rect-p3) (y-distance e2.3-rect-p4 e2.3-rect-p3)))
+(define e2.3-p4p1 (db2p (x-distance e2.3-rect-p4 e2.3-rect-p1) (y-distance e2.3-rect-p4 e2.3-rect-p1)))
+(define e2.3-p4p2 (db2p (x-distance e2.3-rect-p4 e2.3-rect-p2) (y-distance e2.3-rect-p4 e2.3-rect-p2)))
 
 (> e2.3-p3p2 e2.3-p3p1)
 (> e2.3-p3p2 e2.3-p2p1)
@@ -138,5 +141,6 @@ e2.3-p2p1
         (else 0)))
 
 (right-triangle? e2.3-p2p1 e2.3-p3p1 e2.3-p3p2)
-
-(define (rectangle w x y z)())
+(right-triangle? e2.3-p3p1 e2.3-p4p3 e2.3-p4p1)
+(right-triangle? e2.3-p4p2 e2.3-p4p3 e2.3-p3p2)
+(right-triangle? e2.3-p4p2 e2.3-p2p1 e2.3-p4p1)

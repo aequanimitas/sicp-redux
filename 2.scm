@@ -100,10 +100,15 @@
 
 
 ; Exercise 2.3
+
 (define (point-distance x y fn)
   (square (- (fn y) (fn x))))
 (y-point (make-point -4 27))
-(define ex2.3.02 (make-segment (make-point -3 19) (make-point -4 27)))
+(define e2.3-rect-p1 (make-point 0 0))
+(define e2.3-rect-p2 (make-point 0 3))
+(define e2.3-rect-p3 (make-point 6 0))
+(define e2.3-rect-p4 (make-point 6 3))
+(define ex2.3.02 (make-segment e2.3-rect-p1 e2.3-rect-p2))
 (point-distance (start-segment ex2.3.02) (end-segment ex2.3.02) x-point)
 (point-distance (start-segment ex2.3.02) (end-segment ex2.3.02) y-point)
 
@@ -112,5 +117,10 @@
 
 (define (x-distance x y)
   (point-distance x y x-point))
-(define (rectangle w x y z)())
 
+(define (db2p x y)
+  (sqrt (+ (square x) (square y))))
+
+(db2p (x-distance e2.3-rect-p2 e2.3-rect-p1) (y-distance e2.3-rect-p2 e2.3-rect-p1))
+
+(define (rectangle w x y z)())

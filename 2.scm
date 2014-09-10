@@ -152,3 +152,20 @@ e2.3-p2p1
 
 (opposite-sides-equal? e2.3-p2p1 e2.3-p4p3)
 (opposite-sides-equal? e2.3-p4p2 e2.3-p3p1)
+
+(define (rectangle n-side s-side e-side w-side)
+  (if (and (opposite-sides-equal? n-side s-side) (opposite-sides-equal? e-side w-side))
+      (cons n-side w-side)
+      0))
+
+(define (area-rect x)
+  (* (car x) (cdr x)))
+
+(define (perimeter-rect x)
+  (* 2 (+ (car x) (cdr x))))
+
+(rectangle e2.3-p2p1 e2.3-p4p3 e2.3-p4p2 e2.3-p3p1)
+
+(area-rect (rectangle e2.3-p2p1 e2.3-p4p3 e2.3-p4p2 e2.3-p3p1))
+(perimeter-rect (rectangle e2.3-p2p1 e2.3-p4p3 e2.3-p4p2 e2.3-p3p1))
+      

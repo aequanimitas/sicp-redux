@@ -119,8 +119,19 @@
   (point-distance x y x-point))
 
 (define (db2p x y)
-  (sqrt (+ (square x) (square y))))
+  (sqrt (+ x y)))
 
-(db2p (x-distance e2.3-rect-p2 e2.3-rect-p1) (y-distance e2.3-rect-p2 e2.3-rect-p1))
+(define e2.3-p2p1 (db2p (x-distance e2.3-rect-p2 e2.3-rect-p1) (y-distance e2.3-rect-p2 e2.3-rect-p1)))
+(define e2.3-p3p2 (db2p (x-distance e2.3-rect-p3 e2.3-rect-p2) (y-distance e2.3-rect-p3 e2.3-rect-p2)))
+(define e2.3-p3p1 (db2p (x-distance e2.3-rect-p3 e2.3-rect-p1) (y-distance e2.3-rect-p3 e2.3-rect-p1)))
 
+(> e2.3-p3p2 e2.3-p3p1)
+(> e2.3-p3p2 e2.3-p2p1)
+
+e2.3-p3p2
+e2.3-p3p1
+e2.3-p2p1
+
+(- (square e2.3-p3p2) (+ (square e2.3-p3p1) (square e2.3-p2p1)))
+(- (square e2.3-p3p2) 45)
 (define (rectangle w x y z)())

@@ -168,4 +168,18 @@ e2.3-p2p1
 
 (area-rect (rectangle e2.3-p2p1 e2.3-p4p3 e2.3-p4p2 e2.3-p3p1))
 (perimeter-rect (rectangle e2.3-p2p1 e2.3-p4p3 e2.3-p4p2 e2.3-p3p1))
-      
+ 
+; exercise 2.4
+(define (cons-2.4 x y)
+  (lambda (m) (m x y)))
+
+(define (car-2.4 z)
+  (z (lambda (p q) p)))
+
+(define (cdr-2.4 z)
+  (z (lambda (p q) q)))
+
+(car-2.4 (cons-2.4 10 12))
+(cdr-2.4 (cons-2.4 10 12))
+
+(car-2.4 (() 1 2))

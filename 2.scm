@@ -145,3 +145,10 @@ e2.3-p2p1
 (right-triangle? e2.3-p3p1 e2.3-p4p3 e2.3-p4p1)
 (right-triangle? e2.3-p4p2 e2.3-p4p3 e2.3-p3p2)
 (right-triangle? e2.3-p4p2 e2.3-p2p1 e2.3-p4p1)
+
+; there's something easier
+(define (opposite-sides-equal? p1 p2)
+  (= p1 p2))
+
+(opposite-sides-equal? e2.3-p2p1 e2.3-p4p3)
+(opposite-sides-equal? e2.3-p4p2 e2.3-p3p1)

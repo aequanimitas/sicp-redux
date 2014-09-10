@@ -132,6 +132,11 @@ e2.3-p3p2
 e2.3-p3p1
 e2.3-p2p1
 
-(- (square e2.3-p3p2) (+ (square e2.3-p3p1) (square e2.3-p2p1)))
-(- (square e2.3-p3p2) 45)
+(define (right-triangle? p1 p2 p3)
+  (define (round-square x) (round (square x)))
+  (cond ((and (> p3 p2) (> p3 p1)) (= (round-square p3) (+ (round-square p2) (round-square p1))))
+        (else 0)))
+
+(right-triangle? e2.3-p2p1 e2.3-p3p1 e2.3-p3p2)
+
 (define (rectangle w x y z)())

@@ -1,3 +1,5 @@
+(load "util_math.scm")
+
 (define (linear-combination a b x y)
   (+ (* a x) (* b y)))
   
@@ -57,12 +59,6 @@
 (print-point (make-point -3 19))
 (start-segment ex2.2.01)
 (midpoint ex2.2.01)
-
-(define (make-point x y)
-  (cons x y))
-
-(define (make-segment x y)
-  (cons x y))
 
 (define (x-point x)
   (car x))
@@ -181,3 +177,4 @@ e2.3-p2p1
 
 (car-2.4 (cons-2.4 10 12))
 (cdr-2.4 (cons-2.4 10 12))
+

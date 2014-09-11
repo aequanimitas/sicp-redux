@@ -60,18 +60,6 @@
 (start-segment ex2.2.01)
 (midpoint ex2.2.01)
 
-(define (x-point x)
-  (car x))
-
-(define (y-point x)
-  (cdr x))
-
-(define (start-segment x)
-  (car x))
-
-(define (end-segment x)
-  (cdr x))
-
 (define ex2.2.01 (make-segment (make-point -3 19) (make-point -4 27)))
 
 (define (midpoint a)
@@ -177,4 +165,3 @@ e2.3-p2p1
 
 (car-2.4 (cons-2.4 10 12))
 (cdr-2.4 (cons-2.4 10 12))
-

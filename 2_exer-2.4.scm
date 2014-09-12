@@ -12,5 +12,16 @@
 ((lambda (x y) (x y)) square 2)
 
 ; let's regress for better insight
+(lambda (z)
+  (z (lambda (p q) p)))
+
+; anonymous procedure returns with 1 and 2 as arguments to be used along with the returned procedure
 ((lambda (x y) 
-  (lambda (m) (m x y))) 
+  (lambda (m) (m x y))) 1 2)
+
+; barok form
+((lambda (z)
+  (z (lambda (p q) p))) ((lambda (x y) (lambda (m) (m x y))) 1 2))
+
+(((lambda (x y) 
+  (lambda (m) (m x y))) 1 2) -)

@@ -32,41 +32,6 @@
 
 (print-rat (make-rational-basic -10 99))
 
-; Exercise 2.1
-(define (mr n d)
-  (cond ((and (> n 0) (< d 0)) (mr (* -1 n) (* -1 d)))
-        ((and (< d 0) (< n 0)) (mr (* -1 n) (* -1 d)))
-        (else (let ((g (gcd n d)))
-              (cons (/ n g) (/ d g))))))
-   
-(mr -1 -3)
-(mr 1 -3)
-(mr -1 3)
-
-; exercise 2.2
-
-(define (print-point p)
-  (newline)
-  (display "(")
-  (display (x-point p))
-  (display ",")
-  (display (y-point p))
-  (display ")")
-  0)
-
-(make-point 3 -2)
-(start-segment ex2.2.01)
-(print-point (make-point -3 19))
-(start-segment ex2.2.01)
-(midpoint ex2.2.01)
-
-(define ex2.2.01 (make-segment (make-point -3 19) (make-point -4 27)))
-
-(define (midpoint a)
-  (make-rational-basic (/ (+ (car (car a)) (car (cdr a))) 2.0) (/ (+ (cdr (car a)) (cdr (cdr a))) 2)))
-
-(define ex2.3.01 (make-segment (make-point -3 19) (make-point -4 27)))
-(midpoint ex2.3.01)
 ; 2.1.3
 (define (cons-y x y)
   (define (dispatch m)

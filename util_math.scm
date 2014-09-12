@@ -15,3 +15,6 @@
 
 (define (end-segment x)
   (cdr x))
+
+(define (midpoint a)
+  (make-rational-basic (/ (+ (car (car a)) (car (cdr a))) 2.0) (/ (+ (cdr (car a)) (cdr (cdr a))) 2)))

@@ -23,5 +23,14 @@
 ((lambda (z)
   (z (lambda (p q) p))) ((lambda (x y) (lambda (m) (m x y))) 1 2))
 
+; this works, but not immediately evaluated.
+; the anonymous procedure just returns a procedure wherein the 'third' lambda is trapped
+; as the procedure to be used as 'z' in the first lambda.
+; 'z' now passes another lambda that will be used as an expression, which is then called by the expression inside 'z'.
+; the beautiful insight here is the concept of "when" and "where" an anonymous procedure is actually evaluated.  
+
+(lambda (z)
+  (z (lambda (p q) p))) ((lambda (x y) (lambda (m) (m x y))) 1 2)
+
 (((lambda (x y) 
   (lambda (m) (m x y))) 1 2) -)

@@ -51,7 +51,31 @@
   (define (cons x y)
     (* (expt 2 x) (expt 3 y)))
 
-  (display (cons 4 5))
+  (define (not-integer? x y)
+    (not (integer? (/ x y))))
+
+  (define (base-prime x y null-value)
+    (if (= x null-value)
+        y
+        (base-prime (/ x null-value) (+ y 1) null-value)))
+
+  (define (car x)
+    (if (not-integer? x 3)
+        (base-prime x 1 2)
+        (car (/ x 3))))
+
+  (define (cdr x)
+    (if (not-integer? x 2)
+        (base-prime x 1 3)
+        (cdr (/ x 2))))
+
+  (newline)
+  (display "Car: ")
+  (display (car (cons 4 5)))
+  (newline)
+  (display "Cdr: ")
+  (display (cdr 3888))
+
   (cons 4 5))
 
 (exercise-2.5)

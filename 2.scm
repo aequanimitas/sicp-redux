@@ -84,3 +84,13 @@
   (define zero (lambda (f) (lambda (x) x)))
   (zero 1))
 (exercise2.6)
+
+(define (exercise-2.1.4)
+  (define (make-interval a b)
+    (cons a b))
+  (define (upper-bound x)
+    (cdr x))
+  (define (lower-bound x)
+    (car x))
+  (define (sub-interval a b)
+    (make-interval (- (lower-bound a) (lower-bound b)) (- (upper-bound a) (upper-bound b)))))

@@ -79,3 +79,8 @@
   (cons 4 5))
 
 (exercise-2.5)
+
+(define (exercise2.6)
+  (define zero (lambda (f) (lambda (x) x)))
+  (zero 1))
+(exercise2.6)

@@ -46,3 +46,12 @@
 (define lol (cons-y "a" "b"))
 (car-y lol)
 (car-y lol)
+
+(define (exercise-2.5)
+  (define (cons x y)
+    (* (expt 2 x) (expt 3 y)))
+
+  (display (cons 4 5))
+  (cons 4 5))
+
+(exercise-2.5)

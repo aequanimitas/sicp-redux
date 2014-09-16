@@ -93,4 +93,8 @@
   (define (lower-bound x)
     (car x))
   (define (sub-interval a b)
-    (make-interval (- (lower-bound a) (lower-bound b)) (- (upper-bound a) (upper-bound b)))))
+    (make-interval (- (lower-bound a) (lower-bound b)) (- (upper-bound a) (upper-bound b))))
+  (define (interval-width x)
+    (/ (- (upper-bound x) (lower-bound x)) 2))
+
+)

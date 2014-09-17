@@ -81,8 +81,15 @@
 (exercise-2.5)
 
 (define (exercise2.6)
+  (define (inc x)
+    (+ x 1))
   (define zero (lambda (f) (lambda (x) x)))
-  (zero 1))
+  (define one  (lambda (f) (lambda (x) (f x))))
+  (define two  (lambda (f) (lambda (x) (f (f x)))))
+  (newline)
+  (display ((one inc) 9))
+  (newline)
+  (display ((two inc) 9)))
 (exercise2.6)
 
 (define (exercise-2.1.4)

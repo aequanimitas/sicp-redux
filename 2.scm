@@ -92,6 +92,12 @@
   (display ((two inc) 9)))
 (exercise2.6)
 
+(define (prettier-print x y)
+  (newline)
+  (display x)
+  (display y)
+  (newline))
+
 (define (exercise-2.1.4)
   (define (make-interval a b)
     (cons a b))
@@ -103,5 +109,8 @@
     (make-interval (- (lower-bound a) (lower-bound b)) (- (upper-bound a) (upper-bound b))))
   (define (interval-width x)
     (/ (- (upper-bound x) (lower-bound x)) 2))
-
+  (prettier-print "Interval 10->20: " (interval-width (make-interval 10 20)))
+  (prettier-print "Interval 10->30: " (interval-width (make-interval 10 30)))
 )
+
+(exercise-2.1.4)

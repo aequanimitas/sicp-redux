@@ -300,3 +300,10 @@
    (/ (+ (fnx x) (fnx (- x dx)) (fnx (+ x dx))) 3.0)))
 
 ((smooth sin 0.7) (/ pi 2))
+
+(define testing-namespace
+  (define one (1))
+  (define two (2))
+  one)
+
+testing-namespace

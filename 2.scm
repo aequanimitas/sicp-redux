@@ -1,4 +1,5 @@
 (load "util_math.scm")
+(load "util.scm")
 
 (define (linear-combination a b x y)
   (+ (* a x) (* b y)))
@@ -114,3 +115,45 @@
 )
 
 (exercise-2.1.4)
+
+; 2.2.1 Closure Prop and Hierarchical Data
+(define (basic-2.2.1)
+
+  (define one-through-four (list 1 2 3 4))
+  (define one-through (list 1))
+  (better-display (cdr one-through-four))
+  (better-display (car (cdr (cdr one-through-four))))
+  (better-display (car (cdr one-through-four)))
+  (better-display (cons 99 one-through-four))
+  (better-display (cdr one-through))
+  (better-display (car (car one-through))))
+
+(basic-2.2.1)
+
+(define (list-operations-2.2.1)
+
+  (define (list-refs-i items n)
+    (if (= n 0)
+        (car items)
+        (list-refs-i (cdr items) (- n 1))))
+
+  (define (len-i items)
+    (define (iter itemz n)
+      (if (null? itemz)
+          n
+          (iter (cdr itemz) (+ n 1))))
+    (iter items 0))
+
+  (define (len-r items)
+    (if (null? items)
+        0
+        (+ 1 (len-r (cdr items)))))
+
+
+  (define cubes (list 1 8 27 56 125))
+  (define odds (list 1 8 27 56 125))
+  (better-display (list-refs-i cubes 4))
+  (better-display (len-i cubes))
+  0)
+
+(list-operations-2.2.1)

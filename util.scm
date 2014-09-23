@@ -14,3 +14,7 @@
              next
              (try next))))
   (try first-guess))
+
+(define (better-display x)
+  (newline)
+  (display x))

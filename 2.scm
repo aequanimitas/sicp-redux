@@ -194,3 +194,41 @@
   (better-display (reverse-list (list 1 2 3 4 5 199 200))))
 
 (exercise-2.18)
+
+(define (exercise-2.20)
+  (define (z-ex1 a b . c)
+    (better-display c))
+  (define (z-ex2 . a)
+    (better-display (null? a)))
+  (z-ex1 1 2 3 4 5 6)
+  (z-ex2)
+  (z-ex2 1)
+
+  (define (len-i items)
+    (define (iter itemz n)
+      (if (null? itemz)
+          n
+          (iter (cdr itemz) (+ n 1))))
+    (iter items 0))
+
+  (define (same-parity . items)
+    (define il-odd? (odd? (len-i items)))
+    (define (iter i l)
+    ; if il-odd? construct list with only odd numbers
+    ; else if not il-odd? construct list with only even numbers
+    ; if list is already empty, returned constructed list
+      (cond ((null? i)
+             l)
+            ((equal? #t il-odd?)
+              (iter (cdr i) (if (not (odd? (car i)))
+                               l
+                               (cons (car i) l))))
+            ((not il-odd?) 
+              (iter (cdr i) (if (not (odd? (car i)))
+                                (cons (car i) l)
+                                l)))))
+    (iter items (list)))
+
+   (better-display (same-parity 1 2 3 4)))
+
+(exercise-2.20)

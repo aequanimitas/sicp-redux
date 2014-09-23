@@ -220,15 +220,17 @@
       (cond ((null? i)
              l)
             ((equal? #t il-odd?)
-              (iter (cdr i) (if (not (odd? (car i)))
+              (iter (cdr i) (if (even? (car i))
                                l
                                (cons (car i) l))))
             ((not il-odd?) 
-              (iter (cdr i) (if (not (odd? (car i)))
+              (iter (cdr i) (if (even? (car i))
                                 (cons (car i) l)
                                 l)))))
     (iter items (list)))
 
-   (better-display (same-parity 1 2 3 4)))
+   (better-display (same-parity 1 2 3 4))
+   (better-display (same-parity))
+   (better-display (same-parity 1 2 3)))
 
 (exercise-2.20)

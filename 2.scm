@@ -124,9 +124,9 @@
   (better-display (cdr one-through-four))
   (better-display (car (cdr (cdr one-through-four))))
   (better-display (car (cdr one-through-four)))
-  (better-display (cons 99 one-through-four))
-  (better-display (cdr one-through))
-  (better-display (car (car one-through))))
+  (better-display (cons 99 one-through-four)))
+  ; (better-display (cdr one-through))
+  ; (better-display (car (car one-through))))
 
 (basic-2.2.1)
 
@@ -149,11 +149,40 @@
         0
         (+ 1 (len-r (cdr items)))))
 
+  (define (append-r list1 list2)
+    (if (null? list1)
+        list2
+        (cons (car list1) (append-r (cdr list1) list2))))
+
 
   (define cubes (list 1 8 27 56 125))
-  (define odds (list 1 8 27 56 125))
+  (define odds (list 1 3 5 7 9 11 13))
   (better-display (list-refs-i cubes 4))
   (better-display (len-i cubes))
+  (better-display (append-r cubes odds))
   0)
 
 (list-operations-2.2.1)
+
+(define (exercise-2.17)
+
+  (define (len-i items)
+    (define (iter itemz n)
+      (if (null? itemz)
+          n
+          (iter (cdr itemz) (+ n 1))))
+    (iter items 0))
+
+  (define items (list 1 2 3 4 5))
+  (define items-length (len-i items))
+
+  (define (last-pair it il)
+    (if (= il 1)
+        (car it)
+        (last-pair (cdr it) (- il 1))))
+
+  (better-display (last-pair items items-length))) 
+  
+  
+
+(exercise-2.17)

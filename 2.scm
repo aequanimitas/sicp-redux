@@ -182,7 +182,15 @@
         (last-pair (cdr it) (- il 1))))
 
   (better-display (last-pair items items-length))) 
-  
-  
-
 (exercise-2.17)
+
+(define (exercise-2.18)
+  (define (reverse-list items)
+    (define (iter i l)
+      (if (null? i)
+          l
+          (iter (cdr i) (cons (car i) l))))
+    (iter (cdr items) (list (car items))))
+  (better-display (reverse-list (list 1 2 3 4 5 199 200))))
+
+(exercise-2.18)

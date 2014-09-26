@@ -2,6 +2,13 @@
 (define size 2)
 (display size)
 
+; context
+(define (one-1.3)
+  (define (context y)
+    (define y 10)
+    (display y))
+  (context 9))
+
 ; exercise 1.31
 (define (sum-range-i x y term next)
   (define (iter a result)
@@ -307,3 +314,17 @@
   one)
 
 testing-namespace
+
+
+; context, 1.1.3
+(define (one-1.3)
+  (define (context x y)
+    (define x 11)
+    (define y 10)
+    (newline)
+    (display y)
+    (newline)
+    (display x))
+  (context 8 9))
+
+(one-1.3)

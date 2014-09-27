@@ -328,3 +328,13 @@ testing-namespace
   (context 8 9))
 
 (one-1.3)
+
+; compound procedure
+(define (one-1.4)
+  (define (square x)
+    (* x x))
+  (define (sos x y)
+    (+ (square x) (square y)))
+  (sos 3 4))
+
+(one-1.4)

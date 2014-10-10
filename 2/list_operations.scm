@@ -20,7 +20,6 @@
       (nth (- n 1) (cdr x))))
 
 (define (len-i lst)
-  ((repeated cdr 
   (define (iter x y)
     (if (equal? y `())
         x

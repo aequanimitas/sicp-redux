@@ -18,3 +18,8 @@
 (define (better-display x)
   (newline)
   (display x))
+
+(define (len l)
+  (if (null? l)
+      0
+      (+ 1 (len (cdr l)))))

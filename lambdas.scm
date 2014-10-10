@@ -17,7 +17,26 @@
 (define (compose fnx fny)
   (lambda (x) (fnx (fny x))))
 
-(define (repeated fnx x)
-  (if (= x 1)
+((compose square 1+) 6)
+
+(define (repeated fnx x null-est step)
+  (if (null-est x)
       fnx
-      (compose fnx (repeated fnx (- x 1)))))
+      (compose 
+         fnx 
+         (repeated 
+           fnx 
+           (step x)
+           null-est
+           step
+           ))))
+
+(cdr (cdr (list 1 2 3)))
+(equal? (cdr (cdr (cdr (list 1 2 3)))) `())
+
+((repeated 
+    square 
+    2 
+    (lambda (x) (= x 1))
+    (lambda (x) (- x 1)))
+  5)

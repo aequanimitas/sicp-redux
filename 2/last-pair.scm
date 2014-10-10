@@ -1,5 +1,0 @@
-(define (last-pair l)
-  (if (equal? (cdr l) `())
-      (car l)
-      (last-pair (cdr l))))
-(last-pair (list 1 2 3 4))

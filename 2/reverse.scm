@@ -1,4 +1,5 @@
-(load "util")
+(load "list-operators")
+
 (define (rev l)
   (define (iter x o r)
     (if (= x 0)

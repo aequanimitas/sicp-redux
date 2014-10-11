@@ -16,8 +16,10 @@
 (define (rev l)
   (repeater null? l cdr cons car (list) identity))
 
+; linear runtime, improve
 (define (nth l i)
-  (repeater (lambda (x) (= (- (len l) (len x)) i))
+  (define len-l (len l))
+  (repeater (lambda (x) (= (- len-l (len x)) i))
             l
             cdr
             (lambda (x y) x)

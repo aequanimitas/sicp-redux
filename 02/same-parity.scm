@@ -10,4 +10,16 @@
         ((even? (len z)) (iter (len z) even? z (list)))
         (else (iter (len z) odd? z (list)))))
 
+(define (spar-hop . z)
+  (repeater null? z cdr
+            (lambda (x y)
+              (if ((if (even? (len z)) even? odd?) x)
+                  (cons x y)
+                  y))
+              car
+              (list)
+              rev))
+
 (spar 1 2 3)
+
+(spar-hop 1 2 3)

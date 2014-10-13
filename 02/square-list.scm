@@ -1,17 +1,16 @@
-(load "util")
-
-(define (mapz proc items)
-  (if (null? items)
-        `()
-         (cons (proc (car items))
-               (mapz proc (cdr items)))))
+(load "list-operators")
 
 (define (square-list-hop l)
-  (map square l))
+  (map-to square l))
+
+(define (square-list-map-hop l)
+  (map-hop square l))
 
 (define (square-list-loop items)
   (if (null? items)
       `()
-       (cons (square (car items)) (square-list-loop (cdr items)))))
+      (cons (square (car items)) (square-list-loop (cdr items)))))
 
-(equal? (square-list-loop (list 1 2 3 4)) (square-list-hop (list 1 2 3 4)))
+(square-list-map-hop (list 1 2 3 4))
+(square-list-hop (list 1 2 3 4))
+(square-list-loop (list 1 2 3 4))

@@ -26,3 +26,12 @@
             car
             0
             identity))
+
+(define (map-to proc items)
+  (if (null? items)
+      nil
+      (cons (proc (car items))
+            (map proc (cdr items)))))
+
+(define (map-hop proc items)
+  (repeater null? items cdr cons (lambda (x) (proc (car x)))  (list) rev))

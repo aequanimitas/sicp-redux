@@ -6,3 +6,7 @@
       (cons (dr (cdr z)) (car z))))
 
 (dr n)
+
+(define z (list 1 2))
+
+(pair? (cdr z))

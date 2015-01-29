@@ -14,8 +14,8 @@
               oper)))
 
   (cond ((and (> start end) (step-down step)) (iter start end () -))
-        ((and (> start end) (not (step-down step))) ())
-        ((and (< start end) (step-down step)) ())
+        ((or (and (> start end) (not (step-down step)))
+             (and (< start end) (step-down step))) ())
         (else (iter start end () +))))
 
 (range 1 10 20)

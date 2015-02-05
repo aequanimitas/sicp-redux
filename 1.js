@@ -35,3 +35,28 @@ function increment1(x) {
 
 console.log(sum_range(1, 10, identity, increment1));
 })();
+
+// exercise 1.42
+(function() {
+
+  function inc(x) {
+    return function() {
+      return x + 1;
+    }
+  }
+
+  function square(x) {
+    return x * x;
+  }
+
+  function compose(fn_one, fn_two) {
+    return function(x) {
+      return fn_one(fn_two(x)());
+    }
+  }
+
+  console.log(inc(4)())
+  console.log(compose(square, inc)(5))
+  console.log(compose(square, inc)(6))
+  console.log(compose(function(x) { return x * x }, function(x) { return function() { return x + 1}})(6))
+})();

@@ -60,3 +60,26 @@ console.log(sum_range(1, 10, identity, increment1));
   console.log(compose(square, inc)(6))
   console.log(compose(function(x) { return x * x }, function(x) { return function() { return x + 1}})(6))
 })();
+
+(function() {
+  console.log('\n');
+  console.log('compose');
+  
+  function compose(fnx, fny) {
+    return function(x) {
+      return fnx(fny(x));
+    }
+  }
+
+  function square(x) {
+    return x * x;
+  }
+
+  function identity(x) {
+    return x;
+  }
+
+  console.log(compose(identity, square)(6));
+  console.log(compose(square, identity)(6));
+  console.log('\n');
+})();

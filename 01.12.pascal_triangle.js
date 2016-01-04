@@ -21,6 +21,18 @@ function pascal(x, y) {
 }
 var args = process.argv.slice(2);
 
-var result = pascal(args[0], args[1]);
+// var result = pascal(args[0], args[1]);
+
+// give pascal row
+function horizontalSum(x) {
+  var mid = x % 2 === 1 ? Math.floor(x/2) + 1 : x/2,
+      accu = 0;
+  for (var ct = 1; ct <= x; ct += 1) {
+    accu += pascal(x, ct);
+  }
+  return accu;
+}
+
+var result = horizontalSum(args[0]);
 
 console.log(result);

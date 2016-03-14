@@ -20,8 +20,12 @@ pascal x y | x == 0 || y == 0 = 0
            | y > x            = 0
            | x > 0 && y > 0   = pascal (x - 1) (y - 1) + pascal (x - 1) y
 
-pascalSum :: Integer -> Integer -> Integer
-pascalSum x  y | x == 0 || y == 0 = 0
-               | y == 1 = 1
-               | y > x            = 0
-               | x > 0 && y > 0   = (pascal x y) + pascalSum x (y - 1)
+pascalSum :: Integer -> Integer
+pascalSum x | x <= 1  = 1
+            | x >  1  = pascalSumHelper x 0
+
+pascalSumHelper :: Integer -> Integer -> Integer
+pascalSumHelper x depth | depth == 0 = (pascal x x) + (pascalSumHelper x (depth + 1))
+                        | depth == x = pascal x 0
+                        | depth > 0  = (pascal x (x - depth)) + (pascalSumHelper x (depth + 1))
+                         

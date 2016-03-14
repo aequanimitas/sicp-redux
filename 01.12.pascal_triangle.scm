@@ -2,7 +2,7 @@
   (define (edges? x y)
     (or (= x y) (= y 1)))
   (define (out-of-bounds? x y)
-    (or (= x 0) (= y 0)))
+    (or (= x 0) (= y 0) (> y x))
   (define (runner x y)
     (cond ((edges? x y) 1)
           ((out-of-bounds? x y) 1)

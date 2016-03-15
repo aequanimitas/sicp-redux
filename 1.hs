@@ -20,9 +20,10 @@ pascal x y | x == 0 || y == 0 = 0
            | y > x            = 0
            | x > 0 && y > 0   = pascal (x - 1) (y - 1) + pascal (x - 1) y
 
-pascalSum :: Integer -> Integer
-pascalSum x | x <= 1  = 1
-            | x >  1  = pascalSumHelper x 0
+pascalRowSum :: Integer -> Integer
+pascalRowSum x | x <= 0  = 1
+               | x == 1  = 2
+               | x >  1  = 2 * pascalRowSum (x - 1)
 
 pascalSumHelper :: Integer -> Integer -> Integer
 pascalSumHelper x depth | depth == 0 = (pascal x x) + (pascalSumHelper x (depth + 1))
